@@ -6,4 +6,4 @@ description      'Install and configures tools for building UW-Madison Wordpress
 long_description 'TBD'
 version          '0.1.0'
 
-depends "grunt-cookbook"
+depends "grunt_cookbook"

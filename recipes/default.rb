@@ -12,14 +12,20 @@ composer_project node['uw_wordpress']['doc_root'] do
   dev true
 end
 
-grunt_cookbook_npm node['uw_wordpress']['doc_root'] do
+grunt_cookbook_npm "/" do
   action :install
-  package "bower"
+  package "grunt-cli"
   flags "--global"
 end
 
 grunt_cookbook_npm node['uw_wordpress']['doc_root'] do
   action :install
+end
+
+grunt_cookbook_npm "/" do
+  action :install
+  package "bower"
+  flags "--global"
 end
 
 uw_wordpress_bower node['uw_wordpress']['doc_root'] do

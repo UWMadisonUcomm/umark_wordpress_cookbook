@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: uw-wordpress
+# Cookbook Name:: uw_wordpress
 # Recipe:: default
 #
 # Copyright (C) 2014 YOUR_NAME
@@ -7,21 +7,25 @@
 # All rights reserved - Do Not Redistribute
 #
 
-composer_project node['uw-wordpress']['doc_root'] do
+composer_project node['uw_wordpress']['doc_root'] do
   action :install
 end
 
-grunt_cookbook_npm node['uw-wordpress']['doc_root'] do
+grunt_cookbook_npm node['uw_wordpress']['doc_root'] do
   action :install
   package "bower"
   flags "--global"
 end
 
-grunt_cookbook_npm node['uw-wordpress']['doc_root'] do
+grunt_cookbook_npm node['uw_wordpress']['doc_root'] do
   action :install
 end
 
-grunt_cookbook_grunt node['uw-wordpress']['doc_root'] do
+uw_wordpress_bower node['uw_wordpress']['doc_root'] do
+  action :install
+end
+
+grunt_cookbook_grunt node['uw_wordpress']['doc_root'] do
   action :task
   task "copy"
 end

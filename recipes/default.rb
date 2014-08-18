@@ -13,6 +13,12 @@ end
 
 grunt_cookbook_npm node['uw-wordpress']['doc_root'] do
   action :install
+  package "bower"
+  flags "--global"
+end
+
+grunt_cookbook_npm node['uw-wordpress']['doc_root'] do
+  action :install
 end
 
 grunt_cookbook_grunt node['uw-wordpress']['doc_root'] do

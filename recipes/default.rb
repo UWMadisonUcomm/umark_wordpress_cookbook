@@ -34,10 +34,10 @@ end
 
 grunt_cookbook_grunt node['uw_wordpress']['doc_root'] do
   action :task
-  task "copy"
+  task "copy build"
 end
 
-grunt_cookbook_grunt node['uw_wordpress']['doc_root'] do
-  action :task
-  task "build"
-end
+# grunt_cookbook_grunt node['uw_wordpress']['doc_root'] do
+#   action :task
+#   task "build"
+# end

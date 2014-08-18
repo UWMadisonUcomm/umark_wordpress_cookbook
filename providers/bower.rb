@@ -29,6 +29,9 @@ action :install do
       bower_command += " #{flags}"
   end
 
+  # allow command to be run as root
+  bower_command += " --allow-root"
+
   execute bower_command do
     cwd dir
   end

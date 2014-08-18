@@ -9,6 +9,7 @@
 
 composer_project node['uw_wordpress']['doc_root'] do
   action :install
+  dev true
 end
 
 grunt_cookbook_npm node['uw_wordpress']['doc_root'] do

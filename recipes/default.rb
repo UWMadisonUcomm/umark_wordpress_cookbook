@@ -30,3 +30,7 @@ grunt_cookbook_grunt node['uw_wordpress']['doc_root'] do
   task "copy"
 end
 
+grunt_cookbook_grunt node['uw_wordpress']['doc_root'] do
+  action :task
+  task "build"
+end

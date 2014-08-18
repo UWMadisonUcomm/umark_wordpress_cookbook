@@ -35,5 +35,6 @@ action :install do
   execute bower_command do
     cwd dir
   end
-
+  
+  new_resource.updated_by_last_action(true)
 end

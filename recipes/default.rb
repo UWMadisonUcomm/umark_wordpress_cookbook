@@ -7,11 +7,11 @@
 # All rights reserved - Do Not Redistribute
 #
 
-grunt_cookbook_npm default['uw-wordpress']['doc_root'] do
+grunt_cookbook_npm node['uw-wordpress']['doc_root'] do
   action :install
 end
 
-grunt_cookbook_grunt default['uw-wordpress']['doc_root'] do
+grunt_cookbook_grunt node['uw-wordpress']['doc_root'] do
   action :task
   task "copy"
 end

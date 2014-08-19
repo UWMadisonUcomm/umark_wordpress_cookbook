@@ -2,4 +2,4 @@
 # Cookbook Name:: uw_wordpress
 # Attribute:: default
 
-default['uw_wordpress']['deploy_root'] = '/var/www/'
+default['uw_wordpress']['project_root'] = '/var/www/'

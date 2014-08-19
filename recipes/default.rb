@@ -42,4 +42,11 @@ grunt_cookbook_grunt node['uw_wordpress']['project_root'] do
   task "copy build"
 end
 
-
+# create the uploads directory if it does not exist
+directory "/var/www/public/content/uploads" do
+  owner "apache"
+  group "apache"
+  mode 00755
+  action :create
+  not_if { File.directory?("/var/www/public/content/uploads") }
+end

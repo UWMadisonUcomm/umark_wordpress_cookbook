@@ -45,7 +45,7 @@ end
 
 grunt_cookbook_grunt node['uw_wordpress']['doc_root'] do
   action :task
-  task "copy build watch"
+  task "copy build"
 end
 
 # grunt_cookbook_grunt node['uw_wordpress']['doc_root'] do

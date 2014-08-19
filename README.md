@@ -1,10 +1,14 @@
 # uw-wordpress-cookbook
 
-TODO: Enter the cookbook description here.
+A Chef cookbook for configuring environments for our Wordpress projects.
 
 ## Supported Platforms
 
-TODO: List your supported platforms.
+Centos
+
+## Depends on
+
+* [grunt_cookbook](https://github.com/MattSurabian/grunt_cookbook)
 
 ## Attributes
 
@@ -16,10 +20,10 @@ TODO: List your supported platforms.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['uw-wordpress']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td><tt>['uw-wordpress']['project_root']</tt></td>
+    <td>String</td>
+    <td>Project root</td>
+    <td>/var/www/</td>
   </tr>
 </table>
 
@@ -37,6 +41,16 @@ Include `uw-wordpress` in your node's `run_list`:
 }
 ```
 
+## Resources
+
+### `bower`
+
+Run `bower install` in your project root directory.
+
+```ruby
+
+```
+
 ## License and Authors
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Nick Weaver (jnweaver@wisc.edu)

@@ -3,6 +3,6 @@ maintainer       'Nick Weaver'
 maintainer_email 'jnweaver@wisc.edu'
 license          'All rights reserved'
 description      'Install and configure tools for building UW-Madison Wordpress sites'
-version          '0.1.27'
+version          '0.1.28'
 
 depends "grunt_cookbook"

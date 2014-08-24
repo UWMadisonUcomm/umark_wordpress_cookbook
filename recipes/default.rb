@@ -38,8 +38,12 @@ execute "Install WP-CLI" do
   command "COMPOSER_HOME=#{node['uw_wordpress']['composer_global_dir']} composer -q global require --no-update wp-cli/wp-cli:0.16.*"
 end
 
+execute "Global config bin" do
+  command "COMPOSER_HOME=#{node['uw_wordpress']['composer_global_dir']} composer -q global config bin-dir /usr/local/bin"
+end
+
 execute "Run composer global update" do
-  command "COMPOSER_HOME=#{node['uw_wordpress']['composer_global_dir']} composer -q global update"
+  command "COMPOSER_HOME=#{node['uw_wordpress']['composer_global_dir']}/ composer global update"
 end
 
 execute "Add global vendor to path" do

@@ -29,27 +29,27 @@ end
 
 execute "Install PHP invoker" do
   user 'vagrant'
-  command "composer global require --no-update phpunit/php-invoker:1.1.*"
+  command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update phpunit/php-invoker:1.1.*"
 end
 
 execute "Install Mockery" do
   user 'vagrant'
-  command "composer global require --no-update mockery/mockery:0.8.*"
+  command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update mockery/mockery:0.8.*"
 end
 
 execute "Install WP-CLI" do
   user 'vagrant'
-  command "composer global require --no-update wp-cli/wp-cli:0.16.*"
+  command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update wp-cli/wp-cli:0.16.*"
 end
 
 execute "Global config bin" do
   user 'vagrant'
-  command "composer global config bin-dir /usr/local/bin"
+  command "COMPOSER_HOME=/home/vagrant/.composer composer global config bin-dir /usr/local/bin"
 end
 
 execute "Run composer global update" do
   user 'vagrant'
-  command "composer global update"
+  command "COMPOSER_HOME=/home/vagrant/.composer composer global update"
 end
 
 # execute "Add global vendor to path" do

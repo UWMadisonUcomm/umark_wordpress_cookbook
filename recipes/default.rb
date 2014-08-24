@@ -16,29 +16,19 @@ composer_project node['uw_wordpress']['project_root'] do
   dev true
 end
 
-directory node['uw_wordpress']['composer_global_dir'] do
-  owner 'vagrant'
-  group 'vagrant'
-  action :create
-end
-
 execute "Install PHPunit" do
-  user 'vagrant'
   command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update phpunit/phpunit:4.0.*"
 end
 
 execute "Install PHP invoker" do
-  user 'vagrant'
   command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update phpunit/php-invoker:1.1.*"
 end
 
 execute "Install Mockery" do
-  user 'vagrant'
   command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update mockery/mockery:0.8.*"
 end
 
 execute "Install WP-CLI" do
-  user 'vagrant'
   command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update wp-cli/wp-cli:0.16.*"
 end
 
@@ -48,7 +38,6 @@ end
 # end
 
 execute "Run composer global update" do
-  user 'vagrant'
   command "composer update -d /home/vagrant/.composer"
 end
 

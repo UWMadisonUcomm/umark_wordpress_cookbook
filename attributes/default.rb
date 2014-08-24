@@ -3,4 +3,3 @@
 # Attribute:: default
 
 default['uw_wordpress']['project_root'] = '/var/www/'
-default['uw_wordpress']['composer_global_dir'] = '/usr/local/src/composer'

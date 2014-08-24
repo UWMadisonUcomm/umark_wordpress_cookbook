@@ -32,8 +32,12 @@ execute "Install WP-CLI" do
   command "COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update wp-cli/wp-cli:0.16.*"
 end
 
+execute "Run composer global update" do
+  command "COMPOSER_HOME=/usr/local/src/composer composer -q global update"
+end
+
 execute "Add global vendor to path" do
-  command "export PATH=/usr/local/src/composer/.composer/vendor/bin:$PATH"
+  command "export PATH=/usr/local/src/composer/vendor/bin:$PATH"
 end
 
 # link "/usr/local/bin/wp" do

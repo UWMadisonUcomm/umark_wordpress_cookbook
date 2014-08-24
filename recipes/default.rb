@@ -32,10 +32,9 @@ execute "Install WP-CLI" do
   command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update wp-cli/wp-cli:0.16.*"
 end
 
-# execute "Global config bin" do
-#   user 'vagrant'
-#   command "COMPOSER_HOME=/home/vagrant/.composer composer global config bin-dir /usr/local/bin"
-# end
+execute "Global config bin" do
+  command "COMPOSER_HOME=/home/vagrant/.composer composer global config bin-dir /usr/local/bin"
+end
 
 execute "Run composer global update" do
   command "composer update -d /home/vagrant/.composer"

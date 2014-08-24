@@ -17,8 +17,8 @@ composer_project node['uw_wordpress']['project_root'] do
 end
 
 directory node['uw_wordpress']['composer_global_dir'] do
-  owner 'apache'
-  group 'apache'
+  owner 'vagrant'
+  group 'vagrant'
   action :create
 end
 

@@ -7,9 +7,9 @@
 # All rights reserved - Do Not Redistribute
 #
 
-execute "install php-dom" do
-  command "yum -y install php-dom"
-end
+# execute "install php-dom" do
+#   command "yum -y install php-dom"
+# end
 
 composer_project node['uw_wordpress']['project_root'] do
   action :install
@@ -22,6 +22,8 @@ end
 link "/usr/local/bin/phpunit" do
   to "#{node['uw_wordpress']['project_root']}vendor/bin/phpunit"
 end
+
+
 
 grunt_cookbook_npm "/" do
   action :install

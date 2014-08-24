@@ -24,7 +24,7 @@ end
 
 execute "Install PHPunit" do
   user 'vagrant'
-  command "composer global require --no-update phpunit/phpunit:4.0.*"
+  command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update phpunit/phpunit:4.0.*"
 end
 
 execute "Install PHP invoker" do

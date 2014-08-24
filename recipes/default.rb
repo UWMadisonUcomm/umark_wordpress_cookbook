@@ -23,26 +23,32 @@ directory node['uw_wordpress']['composer_global_dir'] do
 end
 
 execute "Install PHPunit" do
+  user 'vagrant'
   command "composer -q global require --no-update phpunit/phpunit:4.0.*"
 end
 
 execute "Install PHP invoker" do
+  user 'vagrant'
   command "composer -q global require --no-update phpunit/php-invoker:1.1.*"
 end
 
 execute "Install Mockery" do
+  user 'vagrant'
   command "composer -q global require --no-update mockery/mockery:0.8.*"
 end
 
 execute "Install WP-CLI" do
+  user 'vagrant'
   command "composer -q global require --no-update wp-cli/wp-cli:0.16.*"
 end
 
 execute "Global config bin" do
+  user 'vagrant'
   command "composer -q global config bin-dir /usr/local/bin"
 end
 
 execute "Run composer global update" do
+  user 'vagrant'
   command "composer global update"
 end
 

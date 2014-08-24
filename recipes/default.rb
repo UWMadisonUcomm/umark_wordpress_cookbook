@@ -33,7 +33,7 @@ execute "Install WP-CLI" do
 end
 
 execute "Global config bin" do
-  command "COMPOSER_HOME=/home/vagrant/.composer composer global config bin-dir /usr/local/bin"
+  command "composer global config  -d /home/vagrant/.composer bin-dir /usr/local/bin"
 end
 
 execute "Run composer global update" do

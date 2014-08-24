@@ -16,28 +16,34 @@ composer_project node['uw_wordpress']['project_root'] do
   dev true
 end
 
+directory node['uw_wordpress']['composer_global_dir'] do
+  owner 'apache'
+  group 'apache'
+  action :create
+end
+
 execute "Install PHPunit" do
-  command "COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update phpunit/phpunit:4.0.*"
+  command "COMPOSER_HOME=#{node['uw_wordpress']['composer_global_dir']} composer -q global require --no-update phpunit/phpunit:4.0.*"
 end
 
 execute "Install PHP invoker" do
-  command "COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update phpunit/php-invoker:1.1.*"
+  command "COMPOSER_HOME=#{node['uw_wordpress']['composer_global_dir']} composer -q global require --no-update phpunit/php-invoker:1.1.*"
 end
 
 execute "Install Mockery" do
-  command "COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update mockery/mockery:0.8.*"
+  command "COMPOSER_HOME=#{node['uw_wordpress']['composer_global_dir']} composer -q global require --no-update mockery/mockery:0.8.*"
 end
 
 execute "Install WP-CLI" do
-  command "COMPOSER_HOME=/usr/local/src/composer composer -q global require --no-update wp-cli/wp-cli:0.16.*"
+  command "COMPOSER_HOME=#{node['uw_wordpress']['composer_global_dir']} composer -q global require --no-update wp-cli/wp-cli:0.16.*"
 end
 
 execute "Run composer global update" do
-  command "COMPOSER_HOME=/usr/local/src/composer composer -q global update"
+  command "COMPOSER_HOME=#{node['uw_wordpress']['composer_global_dir']} composer -q global update"
 end
 
 execute "Add global vendor to path" do
-  command "export PATH=/usr/local/src/composer/vendor/bin:$PATH"
+  command "export PATH=#{node['uw_wordpress']['composer_global_dir']}/vendor/bin:$PATH"
 end
 
 # link "/usr/local/bin/wp" do

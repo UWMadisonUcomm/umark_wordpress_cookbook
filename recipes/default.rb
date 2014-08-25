@@ -2,9 +2,8 @@
 # Cookbook Name:: uw_wordpress
 # Recipe:: default
 #
-# Copyright (C) 2014 YOUR_NAME
+# Copyright (C) 2014 Nick Weaver
 #
-# All rights reserved - Do Not Redistribute
 #
 
 # execute "install php-dom" do

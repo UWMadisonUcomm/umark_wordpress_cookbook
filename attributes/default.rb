@@ -3,4 +3,7 @@
 # Attribute:: default
 
 default['uw_wordpress']['project_root'] = '/var/www/'
-default['uw_wordpress']['wp_test_root'] = '/var/www/tests/wordpress-develop'
+default['uw_wordpress']['wp_dev_root'] = '/var/www/tests/wordpress-develop'
+default['uw_wordpress']['wp_test_db'] = 'wordpress_test'
+default['uw_wordpress']['wp_dev_db'] = 'wordpress_develop'
+default['uw_wordpress']['wp_version'] = '3.9.2'

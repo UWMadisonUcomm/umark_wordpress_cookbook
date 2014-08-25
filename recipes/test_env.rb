@@ -61,6 +61,10 @@ template "#{node['uw_wordpress']['wp_dev_root']}/wp-tests-config.php" do
   action :create
 end
 
+link default['uw_wordpress']['theme_path'] do
+  to "#{default['uw_wordpress']['wp_dev_db']}/src/wp-content/themes/test-theme"
+end
+
 grunt_cookbook_npm node['uw_wordpress']['wp_dev_root'] do
   action :install
 end

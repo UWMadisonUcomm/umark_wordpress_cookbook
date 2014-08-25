@@ -3,3 +3,4 @@
 # Attribute:: default
 
 default['uw_wordpress']['project_root'] = '/var/www/'
+default['uw_wordpress']['wp_test_root'] = '/var/www/tests/wordpress-develop'

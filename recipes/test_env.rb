@@ -62,8 +62,8 @@ template "#{node['uw_wordpress']['wp_dev_root']}/wp-tests-config.php" do
 end
 
 link node['uw_wordpress']['theme_path'] do
-  to "#{default['uw_wordpress']['wp_dev_db']}/src/wp-content/themes/test-theme"
-  not_if { File.exist?("#{default['uw_wordpress']['theme_path']}") }
+  to "#{node['uw_wordpress']['wp_dev_db']}/src/wp-content/themes/test-theme"
+  not_if { File.exist?("#{node['uw_wordpress']['theme_path']}") }
 end
 
 grunt_cookbook_npm node['uw_wordpress']['wp_dev_root'] do

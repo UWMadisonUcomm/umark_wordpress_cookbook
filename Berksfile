@@ -2,7 +2,7 @@ source "https://supermarket.getchef.com"
 
 metadata
 
-cookbook "grunt_cookbook", git: "https://github.com/MattSurabian/grunt_cookbook"
+cookbook "grunt_cookbook", git: "MattSurabian/grunt_cookbook"
 cookbook "subversion"
 cookbook "database"
 cookbook "composer"

@@ -6,6 +6,7 @@
 #
 #
 
+include_recipe "git"
 include_recipe "composer"
 include_recipe "nodejs"
 include_recipe "grunt_cookbook::install_grunt_cli"
@@ -15,7 +16,7 @@ composer_project node['uw_wordpress']['project_root'] do
   dev true
 end
 
-grunt_cookbook_npm "/" do
+grunt_cookbook_npm "/var/" do
   action :install
   package "bower"
   flags "--global"

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: uw_wordpress
+# Cookbook Name:: umark_wordpress
 # Recipe:: test_env
 #
 # Copyright (C) 2014 Nick Weaver
@@ -18,12 +18,12 @@ mysql_connection = {
   :password => node['mysql']['server_root_password']
 }
 
-mysql_database node['uw_wordpress']['wp_dev_db'] do
+mysql_database node['umark_wordpress']['wp_dev_db'] do
   connection mysql_connection
   action :create
 end
 
-mysql_database node['uw_wordpress']['wp_test_db'] do
+mysql_database node['umark_wordpress']['wp_test_db'] do
   connection mysql_connection
   action :create
 end
@@ -32,52 +32,52 @@ end
 subversion "Wordpress develop" do
   user "vagrant"
   group "vagrant"
-  repository "http://develop.svn.wordpress.org/tags/#{node['uw_wordpress']['wp_version']}"
-  destination node['uw_wordpress']['wp_dev_root']
+  repository "http://develop.svn.wordpress.org/tags/#{node['umark_wordpress']['wp_version']}"
+  destination node['umark_wordpress']['wp_dev_root']
   action :sync
 end
 
-template "#{node['uw_wordpress']['wp_dev_root']}/src/wp-config.php" do
+template "#{node['umark_wordpress']['wp_dev_root']}/src/wp-config.php" do
   source "wp-config.php.erb"
   owner "vagrant"
   group "vagrant"
   variables({
-     :wp_dev_db => node['uw_wordpress']['wp_dev_db'],
+     :wp_dev_db => node['umark_wordpress']['wp_dev_db'],
      :db_user => 'root',
      :db_password => node['mysql']['server_root_password']
   })
   action :create
 end
 
-template "#{node['uw_wordpress']['wp_dev_root']}/wp-tests-config.php" do
+template "#{node['umark_wordpress']['wp_dev_root']}/wp-tests-config.php" do
   source "wp-tests-config.php.erb"
   owner "vagrant"
   group "vagrant"
   variables({
-     :wp_test_db => node['uw_wordpress']['wp_test_db'],
+     :wp_test_db => node['umark_wordpress']['wp_test_db'],
      :db_user => 'root',
      :db_password => node['mysql']['server_root_password']
   })
   action :create
 end
 
-link "#{node['uw_wordpress']['wp_dev_root']}/src/wp-content/themes/test-theme" do
-  to node['uw_wordpress']['theme_path']
-  only_if { File.exist?("#{node['uw_wordpress']['theme_path']}") }
+link "#{node['umark_wordpress']['wp_dev_root']}/src/wp-content/themes/test-theme" do
+  to node['umark_wordpress']['theme_path']
+  only_if { File.exist?("#{node['umark_wordpress']['theme_path']}") }
 end
 
-grunt_cookbook_npm node['uw_wordpress']['wp_dev_root'] do
+grunt_cookbook_npm node['umark_wordpress']['wp_dev_root'] do
   action :install
 end
 
-grunt_cookbook_grunt node['uw_wordpress']['wp_dev_root'] do
+grunt_cookbook_grunt node['umark_wordpress']['wp_dev_root'] do
   action :task
   task "default"
-  not_if { File.exist?("#{node['uw_wordpress']['wp_dev_root']}/build") }
+  not_if { File.exist?("#{node['umark_wordpress']['wp_dev_root']}/build") }
 end
 
 magic_shell_environment 'WP_TESTS_DIR' do
-  value "#{node["uw_wordpress"]["wp_dev_root"]}/tests/phpunit"
+  value "#{node["umark_wordpress"]["wp_dev_root"]}/tests/phpunit"
 end
 
 execute "Install PHPunit" do
@@ -105,5 +105,5 @@ execute "Run composer global update" do
 end
 
 execute "Install Wordpress development instance" do
-  command "wp core install --path=#{node["uw_wordpress"]["wp_dev_root"]}/src --url=wordpress.test --quiet --title='WordPress Develop' --admin_name=admin --admin_email='admin@wordpress.test' --admin_password='password'"
+  command "wp core install --path=#{node["umark_wordpress"]["wp_dev_root"]}/src --url=wordpress.test --quiet --title='WordPress Develop' --admin_name=admin --admin_email='admin@wordpress.test' --admin_password='password'"
 end

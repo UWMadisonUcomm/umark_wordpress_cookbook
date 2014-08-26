@@ -1,6 +1,6 @@
 #
-# Cookbook: uw_wordpress
-# uw_wordpress-bower
+# Cookbook: umark_wordpress
+# umark_wordpress-bower
 #
 
 default_action :install

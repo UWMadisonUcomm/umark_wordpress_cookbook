@@ -26,7 +26,7 @@ grunt_cookbook_npm node['umark_wordpress']['project_root'] do
   action :install
 end
 
-uw_wordpress_bower node['umark_wordpress']['project_root'] do
+umark_wordpress_bower node['umark_wordpress']['project_root'] do
   action :install
 end
 

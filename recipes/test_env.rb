@@ -63,7 +63,7 @@ end
 
 link "#{node['umark_wordpress']['wp_dev_root']}/src/wp-content/themes/test-theme" do
   to node['umark_wordpress']['theme_path']
-  only_if { File.exist?("#{node['umark_wordpress']['theme_path']}") }
+  only_if { File.exist?(node['umark_wordpress']['theme_path']) }
 end
 
 grunt_cookbook_npm node['umark_wordpress']['wp_dev_root'] do

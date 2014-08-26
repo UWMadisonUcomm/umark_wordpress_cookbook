@@ -80,10 +80,6 @@ magic_shell_environment 'WP_TESTS_DIR' do
   value "#{node["uw_wordpress"]["wp_dev_root"]}/tests/phpunit"
 end
 
-execute "Install Wordpress development instance" do
-  command "wp core install --path=#{node["uw_wordpress"]["wp_dev_root"]}/src --url=wordpress.test --quiet --title='WordPress Develop' --admin_name=admin --admin_email='admin@wordpress.test' --admin_password='password'"
-end
-
 execute "Install PHPunit" do
   command "COMPOSER_HOME=/home/vagrant/.composer composer global require --no-update phpunit/phpunit:4.0.*"
 end
@@ -106,4 +102,8 @@ end
 
 execute "Run composer global update" do
   command "composer update -d /home/vagrant/.composer"
+end
+
+execute "Install Wordpress development instance" do
+  command "wp core install --path=#{node["uw_wordpress"]["wp_dev_root"]}/src --url=wordpress.test --quiet --title='WordPress Develop' --admin_name=admin --admin_email='admin@wordpress.test' --admin_password='password'"
 end
